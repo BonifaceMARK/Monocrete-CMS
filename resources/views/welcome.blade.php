@@ -1,0 +1,5 @@
+@include('layout.title')
+@include('layout.header')
+@include('layout.sidebar')
+@include('layout.iframe')
+@include('layout.footer')
