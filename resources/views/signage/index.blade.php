@@ -22,12 +22,12 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($contents as $content)
+            @forelse ($signages as $signage)
                 <tr>
-                    <td style="padding: 8px;">{{ $content->recid }}</td>
-                    <td style="padding: 8px;">{{ $content->sign_id }}</td>
-                    <td style="padding: 8px;">{{ $content->tv }}</td>
-                    <td style="padding: 8px;">{{ $content->location }}</td>
+                    <td style="padding: 8px;">{{ $signage->recid }}</td>
+                    <td style="padding: 8px;">{{ $signage->sign_id }}</td>
+                    <td style="padding: 8px;">{{ $signage->tv }}</td>
+                    <td style="padding: 8px;">{{ $signage->location }}</td>
                     <td  style="font-size: 10px; 
                     padding: 5px; 
                     border-radius: 5px; 
@@ -38,16 +38,16 @@
                     max-width: 130px; 
                     word-wrap: break-word; 
                     white-space: normal; 
-                    overflow: hidden;">{{ $content->filename }}</td>
-                    <td style="padding: 8px;">{{ number_format($content->filesize, 0, '.', ',') }}</td>
-                    <td style="padding: 8px;">{{ $content->filetype}}</td>
-                    <td style="padding: 8px;">{{ $content->created_at }}</td>
-                    <td style="padding: 8px;">{{ $content->updated_at }}</td>
+                    overflow: hidden;">{{ $signage->filename }}</td>
+                    <td style="padding: 8px;">{{ number_format($signage->filesize, 0, '.', ',') }}</td>
+                    <td style="padding: 8px;">{{ $signage->filetype}}</td>
+                    <td style="padding: 8px;">{{ $signage->created_at }}</td>
+                    <td style="padding: 8px;">{{ $signage->updated_at }}</td>
                     {{-- <td style="padding: 8px;">REMARKS</td> --}}
                     <td style="padding: 8px;">
-                        {{-- <a href="{{ route('content.show', $signage->sign_id) }}" class="btn btn-info btn-sm">View</a>
-                        <a href="{{ route('content.edit', $signage->sign_id) }}" class="btn btn-warning btn-sm">Edit</a> --}}
-                        <form action="{{ route('content.delete', $content->sign_id) }}" method="POST" style="display:inline;">
+                        {{-- <a href="{{ route('signage.show', $signage->sign_id) }}" class="btn btn-info btn-sm">View</a>
+                        <a href="{{ route('signage.edit', $signage->sign_id) }}" class="btn btn-warning btn-sm">Edit</a> --}}
+                        <form action="{{ route('signage.delete', $signage->sign_id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="bi bi-trash"></i></button>
@@ -72,7 +72,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="padding: 0;">
-                <iframe src="{{ route('content.create') }}" style="width: 100%; height: 500px; border: none;"></iframe>
+                <iframe src="{{ route('signage.create') }}" style="width: 100%; height: 500px; border: none;"></iframe>
             </div>
         </div>
     </div>

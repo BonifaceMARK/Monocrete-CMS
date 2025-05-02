@@ -4,32 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Content;
+use App\Models\Signage;
 use Illuminate\Support\Facades\Auth;
 
-class ContentController extends Controller
+class SignageController extends Controller
 {
 
     public function test()
     {
-        $contents = Content::all();
-        return view('test', compact('contents'));
+        $signages = Signage::all();
+        return view('test', compact('signages'));
     }
     public function index()
     {
-        $contents = Content::all();
-        return view('content.index', compact('contents'));
-
+        $signages = Signage::all();
+        return view('signage.index', compact('signages'));
     }
 
     public function show($id)
     {
-        return view('content.show', compact('id'));
+        return view('signage.show', compact('id'));
     }
 
-    public function create()
+    public function createSignage()
     {
-        return view('content.create');
+        return view('test');
     }
 
     public function store(Request $request)
@@ -47,7 +46,7 @@ class ContentController extends Controller
 
         $signId = 'SID-' . strtoupper(uniqid());
 
-        Content::create([
+        Signage::create([
             'sign_id' => $signId,
             'tv' => $request->tv,
             'location' => $request->location,
@@ -56,11 +55,11 @@ class ContentController extends Controller
             'filesize' => $fileSize,
         ]);
 
-        return redirect()->route('content.create')->with('success', 'Signage created successfully!');
+        return redirect()->route('signage.create')->with('success', 'Signage created successfully!');
     }
     public function edit($id)
     {
-        return view('content.edit', compact('id'));
+        return view('signage.edit', compact('id'));
     }
 
     public function update(Request $request, $id)

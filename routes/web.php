@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContentController;
+use App\Http\Controllers\SignageController;
 use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +22,12 @@ Route::get('/login/load', [AuthController::class, 'LoadLogin'])->name('Login-pag
 Route::post('/login/post', [AuthController::class, 'Login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
   
-Route::get('/signage/{sign_id}', [ContentController::class, 'show'])->name('user.index');
-Route::get('/content', [ContentController::class, 'index'])->name('content.index');
-Route::get('/content/create', [ContentController::class, 'create'])->name('content.create');
-Route::post('/content/store', [ContentController::class, 'store'])->name('content.store');
-Route::delete('/signage/delete{sign_id}', [ContentController::class, 'destroy'])->name('content.delete');
-Route::get('/signage/edit', [ContentController::class, 'edit'])->name('content.edit');
+Route::get('/signage/{sign_id}', [SignageController::class, 'show'])->name('user.index');
+Route::get('/signage', [SignageController::class, 'index'])->name('signage.index');
+// Route::get('/signage/create', [SignageController::class, 'create'])->name('signage.create');
+Route::post('/signage/store', [SignageController::class, 'store'])->name('signage.store');
+Route::delete('/signage/delete{sign_id}', [SignageController::class, 'destroy'])->name('signage.delete');
+Route::get('/signage/edit', [SignageController::class, 'edit'])->name('signage.edit');
 
 
-Route::get('/test',[ContentController::class,'test'])->name('test');
+Route::get('/create/signage',[SignageController::class,'createSignage'])->name('signage.create');    
