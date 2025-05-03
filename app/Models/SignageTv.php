@@ -5,26 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Signage extends Model
+class SignageTv extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_signage';
-
+    protected $table = 'tbl_signage_tv';
     protected $primaryKey = 'sign_id';
-
-    public $incrementing = false; 
-
     protected $keyType = 'string'; 
 
-    protected $fillable = [
-        'sign_id', 
-        // 'tv',
-        // 'location',
-        'filename',
-        'filetype',
-        'filesize',
-    ];
+    public $incrementing = false;
 
+    protected $fillable = [
+        'sign_id',
+        'tv',
+        'brand',
+        'descript',
+        'remarks',
+    ];
     public $timestamps = true;
 }

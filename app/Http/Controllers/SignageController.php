@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class SignageController extends Controller
 {
 
-    public function test()
-    {
-        $signages = Signage::all();
-        return view('test', compact('signages'));
-    }
+    // public function test()
+    // {
+    //     $signages = Signage::all();
+    //     return view('test', compact('signages'));
+    // }
     public function index()
     {
         $signages = Signage::all();
@@ -23,19 +23,20 @@ class SignageController extends Controller
 
     public function show($id)
     {
-        return view('signage.show', compact('id'));
+        $signages = Signage::findorFail($id);
+        return view('signage.show', compact('signages'));
     }
 
     public function createSignage()
     {
-        return view('test');
+        return view('signage.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'tv' => 'required|string',
-            'location' => 'required|string',
+            'tv' => 'required|string|unique:tbl_signage,tv',
+            'location' => 'required|string|unique:tbl_signage,location',
             'filename' => 'required|file',
         ]);
 

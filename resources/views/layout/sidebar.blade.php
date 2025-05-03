@@ -27,7 +27,7 @@
       </li><!-- End Components Nav --> --}}
       <li class="nav-item">
         <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('signage.index')}}'" >
-          <i class="bi bi-signpost-2-fill"></i>  <span style="font-size: 10px;">Manage Contents</span>
+          <i class="bi bi-signpost-2-fill"></i>  <span style="font-size: 10px;">Manage Signages</span>
         </a>
       </li><!-- End Components Nav -->
       <li class="nav-item">

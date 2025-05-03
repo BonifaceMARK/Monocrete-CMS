@@ -22,7 +22,7 @@ Route::get('/login/load', [AuthController::class, 'LoadLogin'])->name('Login-pag
 Route::post('/login/post', [AuthController::class, 'Login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
   
-Route::get('/signage/{sign_id}', [SignageController::class, 'show'])->name('user.index');
+Route::get('/signage/{sign_id}', [SignageController::class, 'show'])->name('signage.show');
 Route::get('/signage', [SignageController::class, 'index'])->name('signage.index');
 // Route::get('/signage/create', [SignageController::class, 'create'])->name('signage.create');
 Route::post('/signage/store', [SignageController::class, 'store'])->name('signage.store');

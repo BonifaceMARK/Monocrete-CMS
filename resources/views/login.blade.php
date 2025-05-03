@@ -43,7 +43,7 @@
               <div class="col-md-6 d-none d-md-block bg-white text-blue d-flex align-items-center justify-content-center p-4">
                 <div class="text-center">
                   <img src="{{ asset('assets/img/mono_logo.png') }}" alt="Monocrete" class="img-fluid mb-3" style="max-height: 150px;">
-                  <h2 class="h4">Content Management System</h2>
+                  <h2 class="h4">Signage Management System</h2>
                   <p class="small">Manage your Video Needs.</p>
                 </div>
               </div>
