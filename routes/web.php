@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignageController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TvController;
+use App\Http\Controllers\LocationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,12 +24,39 @@ Route::get('/login/load', [AuthController::class, 'LoadLogin'])->name('Login-pag
 Route::post('/login/post', [AuthController::class, 'Login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
   
-Route::get('/signage/{sign_id}', [SignageController::class, 'show'])->name('signage.show');
-Route::get('/signage', [SignageController::class, 'index'])->name('signage.index');
-// Route::get('/signage/create', [SignageController::class, 'create'])->name('signage.create');
-Route::post('/signage/store', [SignageController::class, 'store'])->name('signage.store');
-Route::delete('/signage/delete{sign_id}', [SignageController::class, 'destroy'])->name('signage.delete');
-Route::get('/signage/edit', [SignageController::class, 'edit'])->name('signage.edit');
+// Route::get('/signage/{sign_id}', [SignageController::class, 'show'])->name('signage.show');
+// Route::get('/signage', [SignageController::class, 'index'])->name('signage.index');
+// // Route::get('/signage/create', [SignageController::class, 'create'])->name('signage.create');
+// Route::post('/signage/store', [SignageController::class, 'store'])->name('signage.store');
+// Route::delete('/signage/delete{sign_id}', [SignageController::class, 'destroy'])->name('signage.delete');
+// Route::get('/signage/edit', [SignageController::class, 'edit'])->name('signage.edit');
+// Route::get('/create/signage',[SignageController::class,'createSignage'])->name('signage.create');    
 
+Route::resource('/signages', SignageController::class)->names([
+    'index'   => 'signage.index',
+    'create'  => 'signage.create',
+    'store'   => 'signage.store',
+    'show'    => 'signage.show',
+    'edit'    => 'signage.edit',
+    'update'  => 'signage.update',
+    'destroy' => 'signage.delete',
+]);
+Route::resource('signage-tvs', TvController::class)->names([
+    'index'   => 'tv.index',
+    'create'  => 'tv.create',
+    'store'   => 'tv.store',
+    'show'    => 'tv.show',
+    'edit'    => 'tv.edit',
+    'update'  => 'tv.update',
+    'destroy' => 'tv.delete',
+]);
+Route::resource('signage-location', LocationController::class)->names([
+    'index'   => 'location.index',
+    'create'  => 'location.create',
+    'store'   => 'location.store',
+    'show'    => 'location.show',
+    'edit'    => 'location.edit',
+    'update'  => 'location.update',
+    'destroy' => 'location.delete',
+]);
 
-Route::get('/create/signage',[SignageController::class,'createSignage'])->name('signage.create');    

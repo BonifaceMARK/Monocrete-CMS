@@ -27,7 +27,7 @@ class SignageController extends Controller
         return view('signage.show', compact('signages'));
     }
 
-    public function createSignage()
+    public function create()
     {
         return view('signage.create');
     }
@@ -49,8 +49,8 @@ class SignageController extends Controller
 
         Signage::create([
             'sign_id' => $signId,
-            'tv' => $request->tv,
-            'location' => $request->location,
+            // 'tv' => $request->tv,
+            // 'location' => $request->location,
             'filename' => $filePath,
             'filetype' => $fileType,
             'filesize' => $fileSize,

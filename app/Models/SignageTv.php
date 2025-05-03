@@ -10,17 +10,24 @@ class SignageTv extends Model
     use HasFactory;
 
     protected $table = 'tbl_signage_tv';
-    protected $primaryKey = 'sign_id';
+    protected $primaryKey = 'tv_id';
     protected $keyType = 'string'; 
 
     public $incrementing = false;
 
     protected $fillable = [
-        'sign_id',
+        'tv_id',
         'tv',
         'brand',
         'descript',
         'remarks',
+        'attach',
     ];
     public $timestamps = true;
+
+//     public function signage()
+// {
+//     return $this->belongsTo(Signage::class, 'sign_id', 'sign_id');
+// }
+
 }

@@ -27,4 +27,15 @@ class Signage extends Model
     ];
 
     public $timestamps = true;
+
+//     public function location()
+// {
+//     return $this->hasOne(SignageLocation::class, 'sign_id', 'sign_id');
+// }
+
+// public function tv()
+// {
+//     return $this->hasOne(SignageTv::class, 'sign_id', 'sign_id');
+// }
+
 }
