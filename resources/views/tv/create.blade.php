@@ -23,6 +23,12 @@
             <label for="brand" class="form-label">Brand</label>
             <input type="text" name="brand" class="form-control" value="{{ old('brand') }}">
             
+            <label for="location" class="form-label">Location</label>
+            <input type="text" name="location" class="form-control" value="{{ old('location') }}">
+            
+            <label for="department" class="form-label">Department</label>
+            <input type="text" name="department" class="form-control" value="{{ old('department') }}">
+            
             <label for="descript" class="form-label">Description</label>
             <textarea name="descript" class="form-control">{{ old('descript') }}</textarea>
             

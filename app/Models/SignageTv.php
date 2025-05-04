@@ -18,10 +18,13 @@ class SignageTv extends Model
     protected $fillable = [
         'tv_id',
         'tv',
+        'location',
+        'department',
         'brand',
         'descript',
         'remarks',
         'attach',
+        'url',
     ];
     public $timestamps = true;
 

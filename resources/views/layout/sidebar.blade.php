@@ -35,11 +35,11 @@
           <i class="bi bi-tv-fill"></i>  <span style="font-size: 10px;">Manage TV</span>
         </a>
       </li><!-- End Components Nav -->
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('location.index')}}'" >
           <i class="bi bi-map"></i> <span style="font-size: 10px;">Manage Locations</span>
         </a>
-      </li><!-- End Components Nav -->
+      </li><!-- End Components Nav --> --}}
       {{-- <li class="nav-item">
         <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='https://delsan.mydhris.com/delsan/#/admin/emp/app/leaveapp'" >
           <i class="bi bi-tiktok"></i> <span style="font-size: 10px;">Tiktok</span>

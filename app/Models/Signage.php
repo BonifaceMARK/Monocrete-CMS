@@ -19,8 +19,8 @@ class Signage extends Model
 
     protected $fillable = [
         'sign_id', 
-        // 'tv',
-        // 'location',
+        'tv',
+        'location',
         'filename',
         'filetype',
         'filesize',

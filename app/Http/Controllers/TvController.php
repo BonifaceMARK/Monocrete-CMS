@@ -32,22 +32,26 @@ class TvController extends Controller
             'brand' => 'nullable|string|max:255',
             'descript' => 'nullable|string',
             'remarks' => 'nullable|string',
-            'attach' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Validate image attachment
+            'attach' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
-
-        // Handle file upload if an image is attached
+    
+        // Handle file upload
         if ($request->hasFile('attach')) {
             $file = $request->file('attach');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('public/tv_attachments', $filename);
             $validated['attach'] = $filename;
         }
-
-        // Generate a unique TV ID
-        $validated['tv_id'] = 'TVID-' . strtoupper(uniqid());
-
+    
+        // Generate TV ID and URL
+        $tvId = 'TVID-' . strtoupper(uniqid());
+        $validated['tv_id'] = $tvId;
+    
+        // Generate display URL
+        $validated['url'] = url('/tv/' . $request->tv); // assumes you already have the `/tv/{tv}` route
+    
         SignageTv::create($validated);
-
+    
         return redirect()->route('tv.index')->with('success', 'Signage TV created successfully.');
     }
     

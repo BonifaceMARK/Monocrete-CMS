@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TvController;
-use App\Http\Controllers\LocationController;
+// use App\Http\Controllers\LocationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,13 +50,16 @@ Route::resource('signage-tvs', TvController::class)->names([
     'update'  => 'tv.update',
     'destroy' => 'tv.delete',
 ]);
-Route::resource('signage-location', LocationController::class)->names([
-    'index'   => 'location.index',
-    'create'  => 'location.create',
-    'store'   => 'location.store',
-    'show'    => 'location.show',
-    'edit'    => 'location.edit',
-    'update'  => 'location.update',
-    'destroy' => 'location.delete',
-]);
+// Route::resource('signage-location', LocationController::class)->names([
+//     'index'   => 'location.index',
+//     'create'  => 'location.create',
+//     'store'   => 'location.store',
+//     'show'    => 'location.show',
+//     'edit'    => 'location.edit',
+//     'update'  => 'location.update',
+//     'destroy' => 'location.delete',
+// ]);
+
+Route::get('/tv/{tv}', [SignageController::class, 'showByTv'])->name('signage.tv');
+
 

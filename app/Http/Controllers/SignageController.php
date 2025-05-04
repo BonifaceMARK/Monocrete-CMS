@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Signage;
+use App\Models\SignageLocation;
+use App\Models\SignageTv;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class SignageController extends Controller
 {
@@ -23,13 +26,27 @@ class SignageController extends Controller
 
     public function show($id)
     {
-        $signages = Signage::findorFail($id);
-        return view('signage.show', compact('signages'));
+        $signages = Signage::findOrFail($id);
+        
+        // Determine preview type (image or video)
+        $previewType = null;
+        if (Str::startsWith($signages->filetype, 'image/')) {
+            $previewType = 'image';
+        } elseif (Str::startsWith($signages->filetype, 'video/')) {
+            $previewType = 'video';
+        }
+    
+        // Ensure the filename starts with 'contents/' for correct path
+        $filePath = 'contents/' . $signages->filename;
+    
+        return view('signage.show', compact('signages', 'previewType', 'filePath'));
     }
-
+    
     public function create()
     {
-        return view('signage.create');
+        // $locations = SignageLocation::all();
+        $tvs = SignageTv::all();
+        return view('signage.create', compact('tvs'));
     }
 
     public function store(Request $request)
@@ -39,28 +56,29 @@ class SignageController extends Controller
             'location' => 'required|string|unique:tbl_signage,location',
             'filename' => 'required|file',
         ]);
-
+    
         $file = $request->file('filename');
-        $filePath = $file->store('contents', 'public');
-        $fileType = $file->getClientMimeType();
-        $fileSize = $file->getSize();
-
-        $signId = 'SID-' . strtoupper(uniqid());
-
+        $originalName = $file->getClientOriginalName();
+        $storedFileName = now()->format('Ymd_His') . '_' . $originalName;
+    
+        $file->storeAs('contents', $storedFileName, 'public');
+    
         Signage::create([
-            'sign_id' => $signId,
-            // 'tv' => $request->tv,
-            // 'location' => $request->location,
-            'filename' => $filePath,
-            'filetype' => $fileType,
-            'filesize' => $fileSize,
+            'sign_id' => 'SID-' . strtoupper(uniqid()),
+            'tv' => $request->tv,
+            'location' => $request->location,
+            'filename' => $storedFileName,
+            'filetype' => $file->getClientMimeType(),
+            'filesize' => $file->getSize(),
         ]);
-
+    
         return redirect()->route('signage.create')->with('success', 'Signage created successfully!');
     }
+    
     public function edit($id)
     {
-        return view('signage.edit', compact('id'));
+        $signage = Signage::findOrFail($id);
+        return view('signage.edit', compact('signage'));
     }
 
     public function update(Request $request, $id)

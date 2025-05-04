@@ -5,7 +5,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="{{asset('assets/img/mono_logo.png')}}" alt="">
-        <span style="font-size: 15px;" class="d-none d-lg-block">Content Management System</span>
+        <span style="font-size: 14px;" class="d-none d-lg-block">Signages Management System</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
