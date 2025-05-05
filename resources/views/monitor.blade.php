@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="row">
         @forelse ($files as $file)
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-2">
                 <div class="card">
                     <div class="card-header">
                         TV: {{ $file->tv }} | File: {{ $file->filename }}
