@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TvController;
+use App\Http\Controllers\MonitorController;
 // use App\Http\Controllers\LocationController;
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,7 @@ Route::resource('signage-tvs', TvController::class)->names([
 //     'destroy' => 'location.delete',
 // ]);
 
-Route::get('/tv/{tv}', [SignageController::class, 'showByTv'])->name('signage.tv');
+Route::get('/tv/{tv}', [TvController::class, 'showByTv'])->name('signage.tv');
+Route::get('/monitor', [MonitorController::class, 'showAllTvFiles'])->name('monitor.tv');
 
 

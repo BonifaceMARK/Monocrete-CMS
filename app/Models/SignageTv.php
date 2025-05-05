@@ -17,6 +17,7 @@ class SignageTv extends Model
 
     protected $fillable = [
         'tv_id',
+        'sign_id',
         'tv',
         'location',
         'department',
@@ -32,5 +33,11 @@ class SignageTv extends Model
 // {
 //     return $this->belongsTo(Signage::class, 'sign_id', 'sign_id');
 // }
+
+public function signages()
+{
+    return $this->hasMany(Signage::class, 'tv', 'tv');
+}
+
 
 }

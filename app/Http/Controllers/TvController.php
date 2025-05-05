@@ -15,9 +15,13 @@ class TvController extends Controller
         return view('tv.index',compact('tvs'));
     }
 
-    public function show($id)
+    public function showByTv($tv)
     {
-        return view('tv.show', ['id' => $id]);
+        $tvData = SignageTv::where('tv', $tv)->firstOrFail();
+    
+        $files = $tvData->signages()->get();
+    
+        return view('tv', compact('tvData', 'files'));
     }
 
     public function create()
@@ -28,14 +32,13 @@ class TvController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'tv' => 'required|string|max:255',
+            'tv' => 'required|string|unique:tbl_signage_tv,tv|max:255',
             'brand' => 'nullable|string|max:255',
             'descript' => 'nullable|string',
             'remarks' => 'nullable|string',
             'attach' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
     
-        // Handle file upload
         if ($request->hasFile('attach')) {
             $file = $request->file('attach');
             $filename = time() . '_' . $file->getClientOriginalName();
@@ -43,12 +46,11 @@ class TvController extends Controller
             $validated['attach'] = $filename;
         }
     
-        // Generate TV ID and URL
         $tvId = 'TVID-' . strtoupper(uniqid());
         $validated['tv_id'] = $tvId;
     
-        // Generate display URL
-        $validated['url'] = url('/tv/' . $request->tv); // assumes you already have the `/tv/{tv}` route
+        $ipAddress = 'http://192.168.3.41'; 
+        $validated['url'] = $ipAddress . '/tv/' . $request->tv;
     
         SignageTv::create($validated);
     

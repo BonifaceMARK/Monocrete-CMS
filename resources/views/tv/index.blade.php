@@ -10,14 +10,18 @@
                 {{-- <th style="padding: 8px; text-align: left;">#</th> --}}
                 <th style="padding: 8px; text-align: left;">ID</th>
                 <th style="padding: 8px; text-align: left;">TV</th>
-                <th style="padding: 8px; text-align: left;">Brand</th>
+                <th style="padding: 8px; text-align: left;">Location</th>
+                <th style="padding: 8px; text-align: left;">Department</th>
+                {{-- <th style="padding: 8px; text-align: left;">Brand</th> --}}
+                {{-- 
                 <th style="padding: 8px; text-align: left;">Description</th>
-                {{-- <th style="padding: 8px; text-align: left;">Location</th>
+
                 <th style="padding: 8px; text-align: left;">Filename</th>
                 <th style="padding: 8px; text-align: left;">Filesize.(KB)</th>
                 <th style="padding: 8px; text-align: left;">Filetype</th> --}}
                 <th style="padding: 8px; text-align: left;">Created At</th>
-                <th style="padding: 8px; text-align: left;">Updated At</th>
+                {{-- <th style="padding: 8px; text-align: left;">Updated At</th> --}}
+                <th style="padding: 8px; text-align: left;">URL</th>
                 <th style="padding: 8px; text-align: left;">Remarks</th>
                 <th style="padding: 8px; text-align: left;">Actions</th>
             </tr>
@@ -28,13 +32,16 @@
                     {{-- <td style="padding: 8px;">{{ $tvs->recid }}</td> --}}
                     <td style="padding: 8px;">{{ $tv->tv_id }}</td>
                     <td style="padding: 8px;">{{ $tv->tv }}</td>
-                    <td style="padding: 8px;">{{ $tv->brand }}</td>
+                    <td style="padding: 8px;">{{ $tv->location }}</td>
+                    <td style="padding: 8px;">{{ $tv->department }}</td>
+                    {{-- <td style="padding: 8px;">{{ $tv->brand }}</td> --}}
                     {{-- <td style="padding: 8px;">{{ $tvs->location }}</td> --}}
-                    <td style="padding: 8px;">{{ $tv->descript }}</td>
+                    {{-- <td style="padding: 8px;">{{ $tv->descript }}</td> --}}
                     {{-- <td style="padding: 8px;">{{ number_format($tv->filesize, 0, '.', ',') }}</td> --}}
                     {{-- <td style="padding: 8px;">{{ $tv->filetype}}</td> --}}
                     <td style="padding: 8px;">{{ $tv->created_at }}</td>
-                    <td style="padding: 8px;">{{ $tv->updated_at }}</td>
+                    {{-- <td style="padding: 8px;">{{ $tv->updated_at }}</td> --}}
+                    <td style="padding: 8px;">{{ $tv->url }}</td>
                     <td style="padding: 8px;">{{$tv->remarks}}</td>
                     <td style="padding: 8px;">
                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewTvModal-{{ $tv->sign_id }}">

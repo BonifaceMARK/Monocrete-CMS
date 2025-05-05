@@ -53,7 +53,7 @@ class SignageController extends Controller
     {
         $request->validate([
             'tv' => 'required|string|unique:tbl_signage,tv',
-            'location' => 'required|string|unique:tbl_signage,location',
+            // 'location' => 'required|string|unique:tbl_signage,location',
             'filename' => 'required|file',
         ]);
     
@@ -66,7 +66,7 @@ class SignageController extends Controller
         Signage::create([
             'sign_id' => 'SID-' . strtoupper(uniqid()),
             'tv' => $request->tv,
-            'location' => $request->location,
+            // 'location' => $request->location,
             'filename' => $storedFileName,
             'filetype' => $file->getClientMimeType(),
             'filesize' => $file->getSize(),
@@ -83,7 +83,27 @@ class SignageController extends Controller
 
     public function update(Request $request, $id)
     {
-        return redirect()->route('user.index')->with('success', 'Signage updated successfully!');
+         
+        $request->validate([
+            'tv' => 'nullable|string',
+            'location' => 'nullable|string',
+            'filename' => 'nullable|file',
+        ]);
+        $signage = Signage::findOrFail($id);
+        $signage->tv = $request->tv ?? $signage->tv;
+        $signage->location = $request->location ?? $signage->location;
+        if ($request->hasFile('filename')) {
+            $file = $request->file('filename');
+            $originalName = $file->getClientOriginalName();
+            $storedFileName = now()->format('Ymd_His') . '_' . $originalName;
+            $file->storeAs('contents', $storedFileName, 'public');
+            $signage->filename = $storedFileName;
+            $signage->filetype = $file->getClientMimeType();
+            $signage->filesize = $file->getSize();
+        }
+        $signage->save();
+
+        return redirect()->route('signage.index')->with('success', 'Signage updated successfully!');
     }
 
     public function destroy($id)

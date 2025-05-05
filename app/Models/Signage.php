@@ -20,7 +20,7 @@ class Signage extends Model
     protected $fillable = [
         'sign_id', 
         'tv',
-        'location',
+        // 'location',
         'filename',
         'filetype',
         'filesize',
@@ -37,5 +37,11 @@ class Signage extends Model
 // {
 //     return $this->hasOne(SignageTv::class, 'sign_id', 'sign_id');
 // }
+// public function tv()
+// {
+//     return $this->belongsTo(SignageTv::class, 'sign_id', 'sign_id');
+// }
+
+
 
 }
