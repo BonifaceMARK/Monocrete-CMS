@@ -1,5 +1,5 @@
 @include('layout.title')
-<main id="main" class="main" class="container-fluid">
+<main class="container-fluid">
 <div>
     <button type="button" style="font-size:10px;" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createTvModal">
         <i class="bi bi-tv"></i> Add Smart TV

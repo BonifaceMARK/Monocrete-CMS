@@ -65,3 +65,5 @@ Route::get('/tv/{tv}', [TvController::class, 'showByTv'])->name('signage.tv');
 Route::get('/monitor', [MonitorController::class, 'showAllTvFiles'])->name('monitor.tv');
 
 
+Route::get('/tv/{tv}/check-update', [TvController::class, 'checkUpdate'])->name('tv.checkUpdate');
+

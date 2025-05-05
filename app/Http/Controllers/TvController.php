@@ -24,6 +24,23 @@ class TvController extends Controller
         return view('tv', compact('tvData', 'files'));
     }
 
+    // public function checkUpdate($tv)
+    // {
+    //     $tvData = SignageTv::where('tv', $tv)->firstOrFail();
+    //     $lastUpdated = $tvData->signages()->max('updated_at');
+    
+    //     $lastCheck = session("last_updated_$tv");
+    
+    //     if ($lastUpdated && $lastCheck !== $lastUpdated->toDateTimeString()) {
+    //         session(["last_updated_$tv" => $lastUpdated->toDateTimeString()]);
+    //         return response()->json(['updated' => true]);
+    //     }
+    
+    //     return response()->json(['updated' => false]);
+    // }
+    
+
+
     public function create()
     {
         return view('tv.create');
