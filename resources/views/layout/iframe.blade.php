@@ -1,7 +1,7 @@
 <main id="main" class="main">
     <div class="row justify-content-center">
     <iframe id="iframeContent"
-    src="{{route('signage.index')}}"
+    src="{{route('tv.index')}}"
     width="700px" 
     height="700px" 
     frameborder="0" 

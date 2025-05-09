@@ -30,10 +30,10 @@
                         <th>Created At</th>
                         <td>{{ $signages->created_at->format('F d, Y h:i A') }}</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <th>Url</th>
                         <td>{{ $signages->url }}</td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
             @php

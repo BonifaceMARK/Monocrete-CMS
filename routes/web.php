@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TvController;
+use App\Http\Livewire\TvFiles;
 use App\Http\Controllers\MonitorController;
+USE App\Http\Controllers\UserController;
 // use App\Http\Controllers\LocationController;
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +53,16 @@ Route::resource('signage-tvs', TvController::class)->names([
     'update'  => 'tv.update',
     'destroy' => 'tv.delete',
 ]);
+
+Route::resource('user', UserController::class)->names([
+    'index'   => 'user.index',
+    'create'  => 'user.create',
+    'store'   => 'user.store',
+    'show'    => 'user.show',
+    'edit'    => 'user.edit',
+    'update'  => 'user.update',
+    'destroy' => 'user.delete',
+]);
 // Route::resource('signage-location', LocationController::class)->names([
 //     'index'   => 'location.index',
 //     'create'  => 'location.create',
@@ -61,9 +73,21 @@ Route::resource('signage-tvs', TvController::class)->names([
 //     'destroy' => 'location.delete',
 // ]);
 
-Route::get('/tv/{tv}', [TvController::class, 'showByTv'])->name('signage.tv');
+// Route::get('/tv/{tv}', [TvController::class, 'showByTv'])->name('signage.tv');
 Route::get('/monitor', [MonitorController::class, 'showAllTvFiles'])->name('monitor.tv');
 
+// Route::get('/tv/{tv}', TvFiles::class)->name('tv.display');
 
-Route::get('/tv/{tv}/check-update', [TvController::class, 'checkUpdate'])->name('tv.checkUpdate');
+Route::get('/tv/{tv}', function ($tv) {
+    return view('tv-display', ['tv' => $tv]);
+})->name('tv.display');
 
+
+// Route::get('/tv/{tv}', function ($tv) {
+//     return view('tv-display', ['tv' => $tv]);
+// })->name('tv.display'); // ✅ 
+
+
+// Route::get('/tv/{tv}/check-update', [TvController::class, 'checkUpdate'])->name('tv.checkUpdate');
+
+// Route::get('/tv/{tv}', TvDisplay::class);

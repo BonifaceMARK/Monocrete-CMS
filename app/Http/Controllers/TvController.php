@@ -52,7 +52,7 @@ class TvController extends Controller
             'tv' => 'required|string|unique:tbl_signage_tv,tv|max:255',
             'brand' => 'nullable|string|max:255',
             'descript' => 'nullable|string',
-            'remarks' => 'nullable|string',
+            // 'remarks' => 'nullable|string',
             'attach' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
     

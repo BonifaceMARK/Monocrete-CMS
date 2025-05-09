@@ -26,7 +26,7 @@
             <tr>
                 <th><label for="tv" class="form-label">TV</label></th>
                 <td>
-                    <input style="font-size:10px;" type="text" class="form-control" name="tv" id="tv" value="{{ old('tv', $signage->tv) }}">
+                    <input style="font-size:10px;" type="text" class="form-control" name="tv" id="tv" value="{{ old('tv', $signage->tv) }}" readonly>
                 </td>
             </tr>
 
@@ -53,14 +53,14 @@
             <tr>
                 <th><label for="filetype" class="form-label">File Type</label></th>
                 <td>
-                    <input style="font-size:10px;" type="text" class="form-control" name="filetype" id="filetype" value="{{ old('filetype', $signage->filetype) }}">
+                    <input style="font-size:10px;" type="text" class="form-control" name="filetype" id="filetype" value="{{ old('filetype', $signage->filetype) }}" readonly>
                 </td>
             </tr>
 
             <tr>
                 <th><label for="filesize" class="form-label">File Size (bytes)</label></th>
                 <td>
-                    <input style="font-size:10px;" type="number" class="form-control" name="filesize" id="filesize" value="{{ old('filesize', $signage->filesize) }}">
+                    <input style="font-size:10px;" type="number" class="form-control" name="filesize" id="filesize" value="{{ old('filesize', $signage->filesize) }}" readonly>
                 </td>
             </tr>
         </tbody>

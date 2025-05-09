@@ -22,7 +22,7 @@
                 <th style="padding: 8px; text-align: left;">Created At</th>
                 {{-- <th style="padding: 8px; text-align: left;">Updated At</th> --}}
                 <th style="padding: 8px; text-align: left;">URL</th>
-                <th style="padding: 8px; text-align: left;">Remarks</th>
+                {{-- <th style="padding: 8px; text-align: left;">Remarks</th> --}}
                 <th style="padding: 8px; text-align: left;">Actions</th>
             </tr>
         </thead>
@@ -42,7 +42,7 @@
                     <td style="padding: 8px;">{{ $tv->created_at }}</td>
                     {{-- <td style="padding: 8px;">{{ $tv->updated_at }}</td> --}}
                     <td style="padding: 8px;">{{ $tv->url }}</td>
-                    <td style="padding: 8px;">{{$tv->remarks}}</td>
+                    {{-- <td style="padding: 8px;">{{$tv->remarks}}</td> --}}
                     <td style="padding: 8px;">
                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewTvModal-{{ $tv->sign_id }}">
                             <i class="bi bi-view-stacked"></i>

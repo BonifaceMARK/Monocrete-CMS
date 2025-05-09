@@ -8,36 +8,42 @@
           <span style="font-size: 10px;">Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav --> --}}
-      <li class="nav-item">
-        {{-- <a class="nav-link collapsed" data-bs-target="#components-nav"  href="{{route('report.index')}}">
+      {{-- <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav"  href="{{route('report.index')}}">
             <i class="bi bi-newspaper"></i><span>Financial Planning & Report</span>
-        </a> --}}
-      </li><!-- End Components Nav -->
+        </a>
+      </li><!-- End Components Nav --> --}}
 
-      <li class="nav-item">
-        {{-- <a class="nav-link collapsed" data-bs-target="#components-nav"  href="{{route('cash.index')}}">
+      {{-- <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav"  href="{{route('cash.index')}}">
             <i class="bi bi-cash"></i><span>Cash Management</span>
-        </a> --}}
-      </li><!-- End Components Nav -->
+        </a>
+      </li><!-- End Components Nav --> --}}
 
       {{-- <li class="nav-item">
         <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='http://ddtc-ims.com/'" style="font-size: 10px;" data-bs-target="#components-nav">
           <i class="bi bi-person-video3"></i> Yar IMS <span></span>
         </a>
       </li><!-- End Components Nav --> --}}
+
       <li class="nav-item">
-        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('signage.index')}}'" >
-          <i class="bi bi-signpost-2-fill"></i>  <span style="font-size: 10px;">Manage Signages</span>
+        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('tv.index')}}'" >
+          <i class="bi bi-tv-fill"></i>  <span style="font-size: 10px;">Manage | TV</span>
         </a>
       </li><!-- End Components Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('tv.index')}}'" >
-          <i class="bi bi-tv-fill"></i>  <span style="font-size: 10px;">Manage TV</span>
+        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('signage.index')}}'" >
+          <i class="bi bi-signpost-2-fill"></i>  <span style="font-size: 10px;">Manage | Signage</span>
+        </a>
+      </li><!-- End Components Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('user.index')}}'" >
+          <i class="bi bi-person-lines-fill"></i>  <span style="font-size: 10px;">Manage | User</span>
         </a>
       </li><!-- End Components Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('monitor.tv')}}'" >
-          <i class="bi bi-border-all"></i><span style="font-size: 10px;">Monitor</span>
+          <i class="bi bi-border-all"></i><span style="font-size: 10px;">Monitor | TV</span>
         </a>
       </li><!-- End Components Nav -->
       {{-- <li class="nav-item">

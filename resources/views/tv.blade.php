@@ -2,33 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Now Showing: {{ $tvData->tv }}</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background: black;
-            color: white;
-            overflow: hidden;
-        }
-        .content {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        video, img, embed {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-    </style>
+   
 </head>
 <body>
-    <div class="content">
+    <div wire:poll.5s class="content" >
         @if($files->isEmpty())
             <h1>No files attached to this TV.</h1>
         @else

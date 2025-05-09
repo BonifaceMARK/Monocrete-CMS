@@ -16,7 +16,7 @@
                 <th style="padding: 8px; text-align: left;">Filetype</th>
                 <th style="padding: 8px; text-align: left;">Created At</th>
                 {{-- <th style="padding: 8px; text-align: left;">Updated At</th> --}}
-                <th style="padding: 8px; text-align: left;">Remarks</th>
+                {{-- <th style="padding: 8px; text-align: left;">Remarks</th> --}}
                 <th style="padding: 8px; text-align: left;">Actions</th>
             </tr>
         </thead>
@@ -38,7 +38,7 @@
                     <td style="padding: 8px;">{{ $signage->filetype}}</td>
                     <td style="padding: 8px;">{{ $signage->created_at }}</td>
                     {{-- <td style="padding: 8px;">{{ $signage->updated_at }}</td> --}}
-                    <td style="padding: 8px;">REMARKS</td>
+                    {{-- <td style="padding: 8px;">REMARKS</td> --}}
                     <td style="padding: 8px;">
                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewSignageModal-{{ $signage->sign_id }}">
                             <i class="bi bi-view-stacked"></i>
