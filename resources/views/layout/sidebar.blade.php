@@ -1,66 +1,31 @@
-<aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar" style="background-color: #147327; color: #4e45b1; height: 100vh;">
 
-    <ul class="sidebar-nav" >
+  <ul class="sidebar-nav" style="list-style: none; padding: 0; margin: 0;">
 
-      {{-- <li class="nav-item">
-        <a class="nav-link collapsed" onclick="document.getElementById('iframeContent').src='https://www.monocrete.net/'">
-          <i class="bi bi-grid"></i>
-          <span style="font-size: 10px;">Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav --> --}}
-      {{-- <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav"  href="{{route('report.index')}}">
-            <i class="bi bi-newspaper"></i><span>Financial Planning & Report</span>
-        </a>
-      </li><!-- End Components Nav --> --}}
+    <li class="nav-item">
+    <a class="nav-link collapsed" onclick="document.getElementById('iframeContent').src='{{route('tv.index')}}'" style="color: #371175; text-decoration: none; padding: 10px; display: block;">
+      <i class="bi bi-tv-fill" style="color: #108229;"></i>  <span style="font-size: 10px;">Manage | TV</span>
+    </a>
+    </li><!-- End Components Nav -->
 
-      {{-- <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav"  href="{{route('cash.index')}}">
-            <i class="bi bi-cash"></i><span>Cash Management</span>
-        </a>
-      </li><!-- End Components Nav --> --}}
+    <li class="nav-item">
+    <a class="nav-link collapsed" onclick="document.getElementById('iframeContent').src='{{route('signage.index')}}'" style="color:  #108229; text-decoration: none; padding: 10px; display: block;">
+      <i class="bi bi-signpost-2-fill" style="color:  #108229;"></i>  <span style="font-size: 10px;">Manage | Signage</span>
+    </a>
+    </li><!-- End Components Nav -->
 
-      {{-- <li class="nav-item">
-        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='http://ddtc-ims.com/'" style="font-size: 10px;" data-bs-target="#components-nav">
-          <i class="bi bi-person-video3"></i> Yar IMS <span></span>
-        </a>
-      </li><!-- End Components Nav --> --}}
+    <li class="nav-item">
+    <a class="nav-link collapsed" onclick="document.getElementById('iframeContent').src='{{route('user.index')}}'" style="color:  #108229; text-decoration: none; padding: 10px; display: block;">
+      <i class="bi bi-person-lines-fill" style="color:  #108229;"></i>  <span style="font-size: 10px;">Manage | User</span>
+    </a>
+    </li><!-- End Components Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('tv.index')}}'" >
-          <i class="bi bi-tv-fill"></i>  <span style="font-size: 10px;">Manage | TV</span>
-        </a>
-      </li><!-- End Components Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('signage.index')}}'" >
-          <i class="bi bi-signpost-2-fill"></i>  <span style="font-size: 10px;">Manage | Signage</span>
-        </a>
-      </li><!-- End Components Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('user.index')}}'" >
-          <i class="bi bi-person-lines-fill"></i>  <span style="font-size: 10px;">Manage | User</span>
-        </a>
-      </li><!-- End Components Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='{{route('monitor.tv')}}'" >
-          <i class="bi bi-border-all"></i><span style="font-size: 10px;">Monitor | TV</span>
-        </a>
-      </li><!-- End Components Nav -->
-      {{-- <li class="nav-item">
-        <a class="nav-link collapsed"  onclick="document.getElementById('iframeContent').src='https://delsan.mydhris.com/delsan/#/admin/emp/app/leaveapp'" >
-          <i class="bi bi-tiktok"></i> <span style="font-size: 10px;">Tiktok</span>
-        </a>
-      </li><!-- End Components Nav --> --}}
-      {{-- <li class="nav-item">
-        <a class="nav-link collapsed" style="font-size: 10px;" data-bs-target="#components-nav"  onclick="document.getElementById('iframeContent').src='{{route('signage.index')}}'">
-          <i class="bi bi-person-video3"></i>  Manage Signages<span></span>
-        </a>
-      </li><!-- End Components Nav --> --}}
+    <li class="nav-item">
+    <a class="nav-link collapsed" onclick="document.getElementById('iframeContent').src='{{route('monitor.tv')}}'" style="color:  #108229; text-decoration: none; padding: 10px; display: block;">
+      <i class="bi bi-border-all" style="color:  #108229;"></i><span style="font-size: 10px;">Monitor | TV</span>
+    </a>
+    </li><!-- End Components Nav -->
 
+  </ul>
 
-
-
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
+</aside><!-- End Sidebar -->

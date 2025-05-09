@@ -23,20 +23,91 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        // Validate and store the user data
-        // Redirect or return a response
+        $validator = Validator::make($request->all(), [
+            'emp_fname' => 'required|string|max:255',
+            'emp_lname' => 'required|string|max:255',
+            'emp_user' => 'required|string|max:255|unique:tbl_user,emp_user',
+            'emp_pass' => 'required|string|min:8',
+            'emp_email' => 'required|email|max:255|unique:tbl_user,emp_email',
+            'emp_contact_no' => 'required|string|max:15',
+            'emp_gender' => 'required|string|in:male,female',
+            'user_type' => 'required|string',
+            'user_status' => 'required|string',
+            'emp_sec_question' => 'required|string|max:255',
+            'emp_sec_answer' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user = new User();
+        $user->emp_fname = $request->emp_fname;
+        $user->emp_lname = $request->emp_lname;
+        $user->emp_user = $request->emp_user;
+        $user->emp_pass = Hash::make($request->emp_pass);
+        $user->emp_email = $request->emp_email;
+        $user->emp_contact_no = $request->emp_contact_no;
+        $user->emp_gender = $request->emp_gender;
+        $user->user_type = $request->user_type;
+        $user->user_status = $request->user_status;
+        $user->emp_sec_question = $request->emp_sec_question;
+        $user->emp_sec_answer = $request->emp_sec_answer;
+        $user->created_at = now();
+        $user->updated_at = now();
+
+        $user->save();
+
+        return redirect()->route('user.index')->with('success', 'User created successfully.');
     }
     public function show($id)
     {
-        return view('user.show', ['id' => $id]);
-    } 
+        $user = User::findOrFail($id);
+        return view('user.show', compact('user'));
+    }
     public function edit($id)
     {
-        return view('user.edit', ['id' => $id]);
+        $user = User::findOrFail($id);
+        return view('user.edit', compact('user'));
     }
     public function update(Request $request, $id)
     {
-        // Validate and update the user data
-        // Redirect or return a response
+        $validator = Validator::make($request->all(), [
+            'emp_fname' => 'required|string|max:255',
+            'emp_lname' => 'required|string|max:255',
+            'emp_user' => 'required|string|max:255|unique:tbl_user,emp_user,' . $id . ',emp_id',
+            'emp_email' => 'required|email|max:255|unique:tbl_user,emp_email,' . $id . ',emp_id',
+            'emp_contact_no' => 'required|string|max:15',
+            'emp_gender' => 'required|string|in:male,female',
+            'user_type' => 'required|string',
+            'user_status' => 'required|string',
+            'emp_sec_question' => 'required|string|max:255',
+            'emp_sec_answer' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user = User::findOrFail($id);
+        $user->emp_fname = $request->emp_fname;
+        $user->emp_lname = $request->emp_lname;
+        $user->emp_user = $request->emp_user;
+        if ($request->filled('emp_pass')) {
+            $user->emp_pass = Hash::make($request->emp_pass);
+        }
+        $user->emp_email = $request->emp_email;
+        $user->emp_contact_no = $request->emp_contact_no;
+        $user->emp_gender = $request->emp_gender;
+        $user->user_type = $request->user_type;
+        $user->user_status = $request->user_status;
+        $user->emp_sec_question = $request->emp_sec_question;
+        $user->emp_sec_answer = $request->emp_sec_answer;
+        $user->updated_at = now();
+
+        $user->save();
+
+        return redirect()->route('user.index')->with('success', 'User updated successfully.');
     }
+
 }

@@ -45,7 +45,7 @@
                     {{-- <td style="padding: 8px;">{{$tv->remarks}}</td> --}}
                     <td style="padding: 8px;">
                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewTvModal-{{ $tv->sign_id }}">
-                            <i class="bi bi-view-stacked"></i>
+                            <i class="bi bi-gear-wide-connected"></i>
                         </button>
 
                         <!-- Modal -->
