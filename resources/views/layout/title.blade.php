@@ -27,6 +27,9 @@
   <link href="{{ asset('assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/toastr.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/toastui-chart.min.css') }}" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
   <!-- Template Main CSS File -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">

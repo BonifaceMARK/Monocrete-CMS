@@ -1,16 +1,7 @@
 @extends('layout.title') 
 
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>There were some problems:</strong>
-            <ul class="mb-0">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+  @include('layout.toastr')
 
     <form action="{{ route('tv.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -41,7 +32,7 @@
                 <td><textarea style="font-size: 10px;" name="remarks" class="form-control">{{ old('remarks') }}</textarea></td>
             </tr> --}}
             <tr>
-                <td><label for="attach" class="form-label">Attachment</label></td>
+                <td><label for="attach" class="form-label">TV Image</label></td>
                 <td><input style="font-size: 10px;" style="font-size: 10px;" type="file" name="attach" class="form-control" accept="image/*"></td>
             </tr>
         </table>
