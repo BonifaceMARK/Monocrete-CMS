@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
+
 class UserController extends Controller
 {
     public function index()
@@ -28,20 +29,25 @@ class UserController extends Controller
             'emp_lname' => 'required|string|max:255',
             'emp_user' => 'required|string|max:255|unique:tbl_user,emp_user',
             'emp_pass' => 'required|string|min:8',
-            'emp_email' => 'required|email|max:255|unique:tbl_user,emp_email',
-            'emp_contact_no' => 'required|string|max:15',
-            'emp_gender' => 'required|string|in:male,female',
-            'user_type' => 'required|string',
-            'user_status' => 'required|string',
-            'emp_sec_question' => 'required|string|max:255',
-            'emp_sec_answer' => 'required|string|max:255',
+            'emp_email' => 'nullable|email|max:255|unique:tbl_user,emp_email',
+            'emp_contact_no' => 'nullable|string|max:15',
+            'emp_gender' => 'nullable|string|in:male,female',
+            'user_type' => 'nullable|string|in:admin,employee',
+            'user_status' => 'nullable|string',
+            // 'emp_sec_question' => 'required|string|max:255',
+            // 'emp_sec_answer' => 'required|string|max:255',
         ]);
-
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
         $user = new User();
+         $latestUser = User::orderBy('emp_id', 'desc')->first();
+        if ($latestUser && preg_match('/EID-(\d+)/', $latestUser->emp_id, $matches)) {
+            $nextId = (int)$matches[1] + 1;
+        } else {
+            $nextId = 1;
+        }
+        $user->emp_id = 'EID-' . str_pad($nextId, 5, '0', STR_PAD_LEFT);
         $user->emp_fname = $request->emp_fname;
         $user->emp_lname = $request->emp_lname;
         $user->emp_user = $request->emp_user;
@@ -79,10 +85,10 @@ class UserController extends Controller
             'emp_email' => 'required|email|max:255|unique:tbl_user,emp_email,' . $id . ',emp_id',
             'emp_contact_no' => 'required|string|max:15',
             'emp_gender' => 'required|string|in:male,female',
-            'user_type' => 'required|string',
-            'user_status' => 'required|string',
-            'emp_sec_question' => 'required|string|max:255',
-            'emp_sec_answer' => 'required|string|max:255',
+            'user_type' => 'nullable|string',
+            'user_status' => 'nullable|string',
+            // 'emp_sec_question' => 'required|string|max:255',
+            // 'emp_sec_answer' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {

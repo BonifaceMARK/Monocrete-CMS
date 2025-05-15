@@ -1,3 +1,4 @@
+@include('layout.title')
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center" style="background-color: #147327; color: #ffffff;">
   <div class="d-flex align-items-center justify-content-between">
@@ -66,3 +67,6 @@
     </ul>
   </nav><!-- End Icons Navigation -->
 </header><!-- End Header -->
+
+
+</html>

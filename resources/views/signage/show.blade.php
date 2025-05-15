@@ -43,7 +43,7 @@
         
         <div style="text-align: center; margin-bottom: 1rem;">
             @if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif', 'webp']))
-                <img src="{{ $fileUrl }}" alt="Image Preview" style="max-width: 100%; max-height: 400px;" />
+                <img src="{{ $fileUrl }}" alt="Image Preview" style="max-width: 700px; max-height: 400px;" />
             
             @elseif (in_array($fileExt, ['mp4', 'webm', 'ogg']))
                 <video controls style="max-width: 100%; max-height: 400px;">

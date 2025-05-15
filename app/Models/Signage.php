@@ -33,10 +33,10 @@ class Signage extends Model
 //     return $this->hasOne(SignageLocation::class, 'sign_id', 'sign_id');
 // }
 
-// public function tv()
-// {
-//     return $this->hasOne(SignageTv::class, 'sign_id', 'sign_id');
-// }
+public function tv()
+{
+    return $this->hasOne(SignageTv::class, 'tv', 'tv');
+}
 // public function tv()
 // {
 //     return $this->belongsTo(SignageTv::class, 'sign_id', 'sign_id');

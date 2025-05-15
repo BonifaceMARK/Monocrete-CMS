@@ -24,6 +24,15 @@ class TvController extends Controller
         return view('tv', compact('tvData', 'files'));
     }
 
+      public function show($sign_id)
+    {
+        $tvData = SignageTv::where('sign_id', $sign_id)->firstOrFail();
+        $files = $tvData->signages ?? collect();
+        $isMuted = true;  
+
+        return view('tv.show', compact('tvData', 'files', 'isMuted'));
+    }
+
     // public function checkUpdate($tv)
     // {
     //     $tvData = SignageTv::where('tv', $tv)->firstOrFail();

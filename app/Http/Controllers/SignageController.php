@@ -52,26 +52,26 @@ class SignageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tv' => 'required|string|unique:tbl_signage,tv',
+            'tv' => 'required|string|exists:tbl_signage_tv,tv',
             // 'location' => 'required|string|unique:tbl_signage,location',
             'filename' => 'required|file',
         ]);
-    
+
         $file = $request->file('filename');
         $originalName = $file->getClientOriginalName();
         $storedFileName = now()->format('Ymd_His') . '_' . $originalName;
-    
+
         $file->storeAs('contents', $storedFileName, 'public');
-    
+
         Signage::create([
             'sign_id' => 'SID-' . strtoupper(uniqid()),
-            'tv' => $request->tv,
+            'tv' => $request->input('tv'),
             // 'location' => $request->location,
             'filename' => $storedFileName,
             'filetype' => $file->getClientMimeType(),
             'filesize' => $file->getSize(),
         ]);
-    
+
         return redirect()->route('signage.create')->with('success', 'Signage created successfully!');
     }
     
@@ -80,19 +80,24 @@ class SignageController extends Controller
         $signage = Signage::findOrFail($id);
         return view('signage.edit', compact('signage'));
     }
-
     public function update(Request $request, $id)
     {
-         
         $request->validate([
             'tv' => 'nullable|string',
             'location' => 'nullable|string',
             'filename' => 'nullable|file',
         ]);
+
         $signage = Signage::findOrFail($id);
         $signage->tv = $request->tv ?? $signage->tv;
         $signage->location = $request->location ?? $signage->location;
+
         if ($request->hasFile('filename')) {
+            // Delete the old file if it exists
+            if ($signage->filename && \Storage::disk('public')->exists('contents/' . $signage->filename)) {
+                \Storage::disk('public')->delete('contents/' . $signage->filename);
+            }
+
             $file = $request->file('filename');
             $originalName = $file->getClientOriginalName();
             $storedFileName = now()->format('Ymd_His') . '_' . $originalName;
@@ -101,14 +106,26 @@ class SignageController extends Controller
             $signage->filetype = $file->getClientMimeType();
             $signage->filesize = $file->getSize();
         }
+
         $signage->save();
 
-        return redirect()->route('signage.index')->with('success', 'Signage updated successfully!');
+        // Return a response with a script to dispatch the Livewire event
+        return redirect()->route('signage.index')->with('success', 'Signage updated successfully!')
+            ->with('dispatchEvent', true);
     }
+
 
     public function destroy($id)
     {
-        return redirect()->route('user.index')->with('success', 'Signage deleted successfully!');
+        $signage = Signage::findOrFail($id);
+
+        // Optionally, delete the file from storage
+        if ($signage->filename && \Storage::disk('public')->exists('contents/' . $signage->filename)) {
+            \Storage::disk('public')->delete('contents/' . $signage->filename);
+        }
+
+        $signage->delete();
+
+        return redirect()->route('signage.index')->with('success', 'Signage deleted successfully!');
     }
-        
 }

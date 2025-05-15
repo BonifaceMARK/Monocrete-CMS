@@ -5,6 +5,7 @@ use App\Http\Controllers\SignageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TvController;
 use App\Http\Livewire\TvFiles;
+use App\Models\SignageTv;
 use App\Http\Controllers\MonitorController;
 USE App\Http\Controllers\UserController;
 // use App\Http\Controllers\LocationController;
@@ -58,11 +59,14 @@ Route::resource('user', UserController::class)->names([
     'index'   => 'user.index',
     'create'  => 'user.create',
     'store'   => 'user.store',
-    'show'    => 'user.show',
+    // 'show'    => 'user.show',
     'edit'    => 'user.edit',
     'update'  => 'user.update',
     'destroy' => 'user.delete',
 ]);
+
+Route::get('sign-tvs/{sign_id}', [TvController::class, 'show'])->name('tv.show');
+
 // Route::resource('signage-location', LocationController::class)->names([
 //     'index'   => 'location.index',
 //     'create'  => 'location.create',
@@ -78,9 +82,21 @@ Route::get('/monitor', [MonitorController::class, 'showAllTvFiles'])->name('moni
 
 // Route::get('/tv/{tv}', TvFiles::class)->name('tv.display');
 
-Route::get('/tv/{tv}', function ($tv) {
+
+Route::get('/tv/{tv_id}', function ($tv_id) {
+    $tv = SignageTv::where('tv_id', $tv_id)->first();
+
+    if (!$tv) {
+        abort(404, "TV with ID {$tv_id} not found.");
+    }
+
     return view('tv-display', ['tv' => $tv]);
 })->name('tv.display');
+
+
+// Route::get('/sign-tvs/{sign_id}', TvFiles::class)->name('tv.show');
+
+Route::get('/sign-tvs/{sign_id}', [TvController::class, 'show'])->name('tv.show');
 
 
 // Route::get('/tv/{tv}', function ($tv) {

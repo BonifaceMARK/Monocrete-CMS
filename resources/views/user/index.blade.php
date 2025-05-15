@@ -27,8 +27,8 @@
             <button style="font-size: 10px;" class="btn btn-info"> <i class="bi bi-view-stacked"></i></button>
         </td>
     </tr>
-</tbody>
-</table>
-@empty
+    @empty
     <tr> <label for="empty">No User Available</label></tr>
 @endforelse ($users as $user)
+</tbody>
+</table>

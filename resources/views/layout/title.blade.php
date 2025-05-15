@@ -31,15 +31,16 @@
   <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/toastui-chart.min.css') }}" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-  <!-- Template Main CSS File -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Include Font Awesome CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <!-- Bootstrap Bundle JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{{-- Include Video.js if not already included --}}
+{{-- <link href="{{asset('assets/css/video-js.css')}}" rel="stylesheet" />
+<script src="{{asset('assets/js/video.min.js')}}"></script> --}}
+<script src="//unpkg.com/alpinejs" defer></script>
 
   <!-- =======================================================
   * Template Name: NiceAdmin
